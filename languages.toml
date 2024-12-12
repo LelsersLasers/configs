@@ -1,0 +1,17 @@
+[[language]]
+name = "java"
+indent = { tab-width = 4, unit = " " }
+
+# [[language]]
+# name = "python"
+# language-servers = [{ command = "pyright-langserver", args = ["--stdio"] }]
+
+[language-server.python-lsp]
+command = "pyright-langserver"
+args = ["--stdio"]
+config = ""
+
+[[language]]
+name = "python"
+language-servers = [ { name = "python-lsp" } ]
+
