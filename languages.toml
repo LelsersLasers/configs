@@ -15,3 +15,6 @@ config = ""
 name = "python"
 language-servers = [ { name = "python-lsp" } ]
 
+[[language]]
+name = "c"
+indent = { tab-width = 2, unit = "  " }
