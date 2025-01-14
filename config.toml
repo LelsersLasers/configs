@@ -1,10 +1,13 @@
-theme="catppuccin_macchiato"
+theme="rose_pine_moon"
+# theme="catppuccin_macchiato"
+# theme = "kanagawa"
 
 [editor]
 cursorline = true
 auto-format = false
 idle-timeout = 0
 completion-trigger-len = 1
+end-of-line-diagnostics = "hint"
 rulers = [80]
 
 [editor.statusline]
@@ -28,3 +31,7 @@ skip-levels = 1
 insert = "bar"
 normal = "block"
 select = "underline"
+
+[editor.inline-diagnostics] 
+cursor-line = "warning"
+other-lines = "error"
