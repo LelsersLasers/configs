@@ -98,6 +98,8 @@ require('packer').startup(function(use)
   use "p00f/nvim-ts-rainbow"
   -- Theme: Rose Pine
   use({ 'rose-pine/neovim', as = 'rose-pine' })
+  -- Status line
+  use "echasnovski/mini.nvim"
 
   -- Automatically set up your configuration after cloning packer.nvim
   if packer_bootstrap then
@@ -106,14 +108,11 @@ require('packer').startup(function(use)
 end)
 
 
--- Rose pine configuration
--- require('rose-pine').setup({
---   disable_italics = true,
--- })
-
-
--- h = require('rose-pine.util').highlight
--- h('Keyword', { fg = p.pine, italic = true })
+local statusline = require 'mini.statusline'
+statusline.section_location = function()
+  return '%2l:%-2v'
+end
+require('mini.statusline').setup()
 
 -- Treesitter configuration
 require'nvim-treesitter.configs'.setup {
