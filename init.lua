@@ -1,7 +1,3 @@
--- -- Enable cursor shapes for different modes
--- vim.opt.guicursor = "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50"
--- vim.opt.guicursor:append("v:underline") -- Visual mode underline cursor
-
 -- 80 character ruler
 vim.opt.colorcolumn = "80"
 
@@ -26,6 +22,13 @@ vim.opt.hlsearch = true
 -- Incremental search
 vim.opt.incsearch = true
 
+-- Automatically use case-sensitive search only when uppercase letters are used
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+
+-- Escape clears search highligh
+vim.keymap.set("n", "<Esc>", ":nohlsearch<CR>", { noremap = true, silent = true })
+
 -- Enable mouse support
 vim.opt.mouse = "a"
 
@@ -48,6 +51,10 @@ vim.opt.termguicolors = true
 vim.cmd("filetype on")
 vim.cmd("syntax on")
 
+-- Bind control-e to file explorer
+vim.keymap.set("n", "<C-e>", ":Ex<CR>", { noremap = true, silent = true })
+
+
 
 -- Automatically install packer.nvim if not already installed
 local ensure_packer = function()
@@ -63,23 +70,7 @@ end
 
 local packer_bootstrap = ensure_packer()
 
--- Load packer.nvim
-require('packer').startup(function(use)
-  -- Packer itself
-  use 'wbthomason/packer.nvim'
-
-  -- Add your plugins here (e.g., Tree-sitter)
-  use {
-    'nvim-treesitter/nvim-treesitter',
-    run = ':TSUpdate'
-  }
-
-  -- Automatically set up your configuration after cloning packer.nvim
-  if packer_bootstrap then
-    require('packer').sync()
-  end
-end)
-
+-- Packages
 require('packer').startup(function(use)
   -- Manage packer itself
   use 'wbthomason/packer.nvim'
@@ -94,7 +85,7 @@ require('packer').startup(function(use)
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate'
   }
-  -- Rainbow
+  -- Rainbow parentheses/braces
   use "p00f/nvim-ts-rainbow"
   -- Theme: Rose Pine
   use({ 'rose-pine/neovim', as = 'rose-pine' })
@@ -108,11 +99,13 @@ require('packer').startup(function(use)
 end)
 
 
+-- Config status line
 local statusline = require 'mini.statusline'
 statusline.section_location = function()
   return '%2l:%-2v'
 end
 require('mini.statusline').setup()
+
 
 -- Treesitter configuration
 require'nvim-treesitter.configs'.setup {
@@ -133,7 +126,7 @@ require'nvim-treesitter.configs'.setup {
     enable = true,
   },
 
-  -- Rainbow!
+  -- Rainbow parentheses/braces
   rainbow = {
     enable = true,
     extended_mode = true, -- Highlight non-bracket delimiters like HTML tags
@@ -141,5 +134,6 @@ require'nvim-treesitter.configs'.setup {
   }
 }
 
--- Theme
+
+-- Set theme (do last)
 vim.cmd('colorscheme rose-pine-moon')
