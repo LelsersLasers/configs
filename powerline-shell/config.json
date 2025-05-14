@@ -1,0 +1,12 @@
+{
+  "segments": [
+    "virtual_env",
+    "ssh",
+    "cwd",
+    "git",
+    "hg",
+    "jobs",
+    "root"
+  ],
+  "theme": "~/.local/lib/python3.12/site-packages/powerline_shell/themes/gruvbox.py"
+}
