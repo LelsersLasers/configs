@@ -1,0 +1,18 @@
+[general]
+import = ["~/.config/alacritty/catppuccin-macchiato.toml"]
+live_config_reload = true
+
+[env]
+TERM = "xterm-256color"
+
+[window]
+decorations = "None"
+dynamic_padding = false
+opacity = 0.95
+blur = true
+
+[font]
+size=13
+# [window.padding]
+# x = 25
+# y = 20
