@@ -1,4 +1,4 @@
-theme="rose_pine_moon"
+theme="rose_pine_moon_trans"
 # theme="catppuccin_macchiato"
 # theme = "kanagawa"
 
@@ -9,6 +9,7 @@ idle-timeout = 0
 completion-trigger-len = 1
 end-of-line-diagnostics = "hint"
 rulers = [80]
+bufferline = "always"
 
 [editor.statusline]
 left = ["mode", "spinner", "version-control"]
@@ -32,6 +33,18 @@ insert = "bar"
 normal = "block"
 select = "underline"
 
-[editor.inline-diagnostics] 
-cursor-line = "warning"
-other-lines = "error"
+[editor.soft-wrap]
+enable = true
+
+[editor.inline-diagnostics]
+cursor-line = "hint"
+other-lines = "warning"
+
+[keys.normal." "]
+S-e = "file_explorer"
+e = "file_explorer_in_current_buffer_directory"
+
+[keys.normal]
+C-q = ":buffer-close"
+C-j = ["move_visual_line_down", "scroll_down"]
+C-k = ["move_visual_line_up", "scroll_up"]
